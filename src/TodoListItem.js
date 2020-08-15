@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 
 function TodoListItem(props) {
 
-    const {el, updateTodo, markTodo, index, moveUp} = props;
+    const {el, updateTodo, markTodo, index, moveUp, isElemLast} = props;
     const [updatedTitle, setUpdatedTitle] = useState(el.title);
     const [editMode, setEditMode] = useState(false)
     const style = el.done === true ? {'textDecoration': 'line-through'} : null
@@ -35,8 +35,8 @@ function TodoListItem(props) {
                         <input type="checkbox" checked={el.done} onClick={() => markTodo(el.id)}/>
                         {el.title}
                         <button onClick={() => props.deleteTodo(el.id)}>Delete</button>
-                        <button disabled={!index} onClick={() => moveUp(index)}>↑</button>
-                        <button>↓</button>
+                        <button disabled={!index} onClick={() => moveUp(index, index - 1)}>↑</button>
+                        <button disabled={isElemLast} onClick={() => moveUp(index, index + 1)}>↓</button>
                     </>
                 )}
                 <button onClick={changeEditMode}>Edit</button>

@@ -39,12 +39,12 @@ function App() {
         setList(newList)
     }
 
-    const moveUp = (index) => {
-        if (index === 0) return
+    const moveUp = (currentElement, previousElement) => {
+        if (previousElement < 0 || previousElement >= list.length) return
         const newList = list.map((el, i) => {
-            if (index === i) return list [index - 1]
-            if (index - 1 === i) return list [index]
-            return el
+            if (currentElement === i) return list [previousElement]
+            if (previousElement === i) return list [currentElement]
+            return el;
         })
         setList(newList)
     }
@@ -61,6 +61,7 @@ function App() {
                 updateTodo={updateTodo}
                 markTodo={markTodo}
                 moveUp={moveUp}
+                list={list}
             />
 
         </div>
