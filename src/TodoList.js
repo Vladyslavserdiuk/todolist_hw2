@@ -11,7 +11,7 @@ function TodoList(props) {
             {todoList.map((el, index) => {
                 const isElemLast = index === list.length - 1
                 return <TodoListItem
-                    key={el.id}
+                    key={el._id}
                     updateTodo={updateTodo}
                     deleteTodo={deleteTodo}
                     el={el}

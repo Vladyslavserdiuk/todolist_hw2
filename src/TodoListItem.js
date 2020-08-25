@@ -10,7 +10,7 @@ function TodoListItem(props) {
 
 
     const editButtonHandler = () => {
-        updateTodo(updatedTitle, el.id)
+        updateTodo(updatedTitle, el._id)
         setEditMode(false)
         setUpdatedTitle("")
     }
@@ -32,9 +32,9 @@ function TodoListItem(props) {
                     </>
                 ) : (
                     <>
-                        <input type="checkbox" checked={el.done} onClick={() => markTodo(el.id)}/>
-                        {el.title}
-                        <button onClick={() => props.deleteTodo(el.id)}>Delete</button>
+                        <input type="checkbox" checked={el.done} onClick={() => markTodo(el._id)}/>
+                        {el.name}
+                        <button onClick={() => props.deleteTodo(el._id)}>Delete</button>
                         <button disabled={!index} onClick={() => moveUp(index, index - 1)}>↑</button>
                         <button disabled={isElemLast} onClick={() => moveUp(index, index + 1)}>↓</button>
                     </>
