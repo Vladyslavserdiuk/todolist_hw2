@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import TodoList from "./TodoList";
 import TodoController from "./TodoController";
+import axios from "axios";
 
 function App() {
 
@@ -48,6 +49,17 @@ function App() {
         })
         setList(newList)
     }
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/todo')
+            .then(result => {
+                const listFromServer = result.data
+                console.log(listFromServer)
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }, [ ])
 
 
     return (
