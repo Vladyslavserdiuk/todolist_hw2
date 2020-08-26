@@ -8,11 +8,6 @@ function App() {
 
     const [list, setList] = useState(
         []
-        //     [
-        //     {id: 1, title: "First", done: false},
-        //     {id: 2, title: "Second", done: false},
-        //     {id: 3, title: "Third", done: false}
-        // ]
     );
 
     const addNewTodo = async (newTitle) => {
